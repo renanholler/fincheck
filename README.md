@@ -29,12 +29,14 @@
 ## 🚀 Tecnologias
 
 ### Backend (API)
+
 - **[NestJS](https://nestjs.com/)** - Framework Node.js progressivo
 - **[Prisma](https://www.prisma.io/)** - ORM moderno para TypeScript
 - **[PostgreSQL](https://www.postgresql.org/)** - Banco de dados relacional
 - **[JWT](https://jwt.io/)** - Autenticação stateless
 
 ### Frontend
+
 - **[React](https://react.dev/)** - Biblioteca para interfaces
 - **[TypeScript](https://www.typescriptlang.org/)** - JavaScript com tipagem
 - **[Vite](https://vitejs.dev/)** - Build tool moderna
@@ -43,6 +45,7 @@
 - **[Radix UI](https://www.radix-ui.com/)** - Componentes acessíveis
 
 ### DevOps
+
 - **[Docker](https://www.docker.com/)** - Containerização
 - **[Docker Compose](https://docs.docker.com/compose/)** - Orquestração
 
@@ -104,6 +107,7 @@ docker-compose up -d
 ```
 
 Pronto! A aplicação estará disponível em:
+
 - 🎨 **Frontend**: http://localhost:5173
 - 🔌 **API**: http://localhost:3000
 - 🗄️ **PostgreSQL**: localhost:5432
@@ -169,24 +173,3 @@ fincheck/
 ├── .env.example         # Template de variáveis
 └── README.md           # Este arquivo
 ```
-
----
-
-## 👤 Autor
-
-**Renan Holler**
-
-- GitHub: [@renanholler](https://github.com/renanholler)
-- LinkedIn: [Renan Holler](https://www.linkedin.com/in/renanholler)
-
----
-
-## 🙏 Agradecimentos
-
-Projeto desenvolvido durante o bootcamp da [JStack](https://jstack.com.br/).
-
----
-
-<div align="center">
-  Feito com ❤️ por Renan Holler
-</div>
