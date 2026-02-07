@@ -181,27 +181,47 @@ fincheck/
 
 ### Comandos Úteis
 
-#### Docker
+O projeto inclui um `Makefile` para facilitar o desenvolvimento. Para ver todos os comandos disponíveis:
 
 ```bash
-# Iniciar em modo desenvolvimento (com logs)
-docker-compose up
+make help
+```
 
-# Iniciar em background
-docker-compose up -d
+#### Comandos Principais
 
-# Parar containers
-docker-compose down
+```bash
+# Setup e inicialização
+make setup              # Setup inicial completo
+make up                 # Inicia containers (com logs)
+make up-d               # Inicia em background
+make down               # Para containers
+make clean              # Para e remove volumes (reseta banco)
 
-# Resetar banco de dados
-docker-compose down -v
+# Logs e monitoramento
+make logs               # Logs de todos os serviços
+make logs-api           # Logs apenas da API
+make logs-frontend      # Logs apenas do Frontend
+make ps                 # Status dos containers
 
-# Reconstruir imagens
-docker-compose up --build
+# Desenvolvimento
+make shell-api          # Acessa shell da API
+make shell-frontend     # Acessa shell do Frontend
+make prisma-studio      # Abre Prisma Studio
 
-# Ver logs específicos
-docker-compose logs -f api
-docker-compose logs -f frontend
+# Manutenção
+make build              # Reconstrói imagens
+make rebuild            # Limpa tudo e reconstrói
+make update-submodules  # Atualiza submodules
+```
+
+#### Ou use Docker Compose diretamente
+
+```bash
+docker-compose up       # Iniciar com logs
+docker-compose up -d    # Iniciar em background
+docker-compose down     # Parar containers
+docker-compose down -v  # Parar e resetar banco
+docker-compose logs -f  # Ver logs
 ```
 
 #### Submodules
