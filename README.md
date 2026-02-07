@@ -1,124 +1,114 @@
 # 💰 Fincheck
 
-**Fincheck** é uma aplicação completa de controle financeiro pessoal, permitindo que usuários gerenciem suas receitas, despesas e contas bancárias de forma simples e intuitiva.
+**Fincheck** is a full-stack personal finance management application that helps users track income, expenses and bank accounts through a clean and intuitive interface.
+Built to simulate real-world financial workflows while applying modern full-stack architecture and best practices.
 
 <img width="49%" alt="login" src="https://github.com/user-attachments/assets/518ad5a1-c0a0-43c4-8095-69f8ed65c890" />
 <img width="49%" alt="dashboard" src="https://github.com/user-attachments/assets/2d792aae-3bc4-4863-bbb1-680460561a80" />
 
+---
+
+## ✨ Features
+
+* Income and expense management
+* Transaction categorization
+* Advanced filters by period, category and type
+* Financial dashboard overview
+* Multiple bank accounts support
+* Real-time balance tracking
+* JWT authentication
+* User-isolated data
 
 ---
 
-## ✨ Funcionalidades
-
-- ✅ Cadastro e gerenciamento de receitas e despesas
-- ✅ Categorização de transações
-- ✅ Filtros avançados por período, categoria e tipo
-- ✅ Dashboard com visão geral das finanças
-- ✅ Cadastro de múltiplas contas bancárias
-- ✅ Acompanhamento de saldo em tempo real
-- ✅ Sistema de autenticação JWT
-- ✅ Dados isolados por usuário
-
----
-
-## 🚀 Tecnologias
+## 🚀 Technologies
 
 ### Backend (API)
 
-- **[NestJS](https://nestjs.com/)** - Framework Node.js opinado e modular
-- **[Prisma](https://www.prisma.io/)** - ORM moderno para TypeScript
-- **[PostgreSQL](https://www.postgresql.org/)** - Banco de dados relacional
-- **[JWT](https://jwt.io/)** - Autenticação stateless
+* NestJS
+* Prisma
+* PostgreSQL
+* JWT
 
 ### Frontend
 
-- **[React](https://react.dev/)** - Biblioteca para interfaces
-- **[TypeScript](https://www.typescriptlang.org/)** - JavaScript com tipagem
-- **[Vite](https://vitejs.dev/)** - Build tool moderna
-- **[React Query](https://tanstack.com/query)** - Gerenciamento de estado
-- **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first
-- **[shadcn/ui](https://ui.shadcn.com/)** - Componentes reutilizáveis
+* React
+* TypeScript
+* Vite
+* React Query
+* Tailwind CSS
+* shadcn/ui
 
 ### DevOps
 
-- **[Docker](https://www.docker.com/)** - Containerização
-- **[Docker Compose](https://docs.docker.com/compose/)** - Orquestração
+* Docker
+* Docker Compose
 
 ---
 
-## 🏗️ Arquitetura
+## 🏗️ Architecture
 
 <img width="100%" alt="arc" src="https://github.com/user-attachments/assets/2e8666f5-5a24-41a3-95f8-a75bd0443c2f" />
 
+### Repositories
 
-### Repositórios
+This is a **monorepo** that centralizes orchestration. The code is maintained in separate repositories using **Git Submodules**:
 
-Este é um **monorepo** que centraliza a orquestração. Os códigos são mantidos em repositórios separados com **Git Submodules**:
+* **fincheck_api** – Backend (REST API)
+* **fincheck_frontend** – Frontend (SPA)
 
-- **[fincheck_api](https://github.com/renanholler/fincheck_api)** - Backend (API REST)
-- **[fincheck_frontend](https://github.com/renanholler/fincheck_frontend)** - Frontend (SPA)
-
-Para mais detalhes sobre a arquitetura, veja [docs/architecture.md](./docs/architecture.md).
+For more details, see `docs/architecture.md`.
 
 ---
 
-## 🚀 Como Executar
+## 🚀 Running Locally
 
-### Pré-requisitos
+### Requirements
 
-- [Docker](https://www.docker.com/get-started)
-- [Docker Compose](https://docs.docker.com/compose/install/)
-- [Git](https://git-scm.com/)
+* Docker
+* Docker Compose
+* Git
 
-### Instalação
+### Installation
 
 ```bash
-# Clone o repositório com os submodules
 git clone --recurse-submodules https://github.com/renanholler/fincheck.git
 cd fincheck
 
-# Inicie os containers
 docker-compose up -d
-
-# Aguarde ~1 minuto para os serviços iniciarem
 ```
 
-Pronto! A aplicação estará disponível em:
+After startup:
 
-- 🎨 **Frontend**: http://localhost:5173
-- 🔌 **API**: http://localhost:3000
-- 🗄️ **PostgreSQL**: localhost:5432
+* Frontend: [http://localhost:5173](http://localhost:5173)
+* API: [http://localhost:3000](http://localhost:3000)
+* PostgreSQL: localhost:5432
 
 ---
 
-## 💻 Comandos Úteis
-
-### Makefile
+## 🛠 Useful Commands
 
 ```bash
-make help              # Ver todos os comandos
-make up                # Iniciar containers
-make down              # Parar containers
-make logs              # Ver logs
-make clean             # Resetar banco de dados
-make prisma-studio     # Abrir Prisma Studio
+make help
+make up
+make down
+make logs
+make clean
+make prisma-studio
 ```
 
 ---
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 fincheck/
-├── api/                  # Backend (Git Submodule)
-├── frontend/             # Frontend (Git Submodule)
-├── docs/                 # Documentação
-│   └── architecture.md   # Arquitetura técnica
-├── scripts/              # Scripts de automação
-│   └── setup.sh          # Setup inicial
-├── docker-compose.yml    # Orquestração Docker
-├── Makefile              # Comandos úteis
-├── .env.example          # Template de variáveis
-└── README.md             # Este arquivo
+├── api/
+├── frontend/
+├── docs/
+├── scripts/
+├── docker-compose.yml
+├── Makefile
+├── .env.example
+└── README.md
 ```
-
