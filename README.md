@@ -1,14 +1,13 @@
 # 💰 Fincheck
 
-**Fincheck** é uma aplicação completa de controle financeiro pessoal, permitindo que usuários gerenciem suas receitas, despesas, contas bancárias e cartões de crédito de forma simples e intuitiva.
+**Fincheck** é uma aplicação completa de controle financeiro pessoal, permitindo que usuários gerenciem suas receitas, despesas e contas bancárias de forma simples e intuitiva.
 
 <div align="center">
-  
-[![API](https://img.shields.io/badge/API-NestJS-E0234E?logo=nestjs)](https://github.com/renanholler/fincheck_api)
-[![Frontend](https://img.shields.io/badge/Frontend-React-61DAFB?logo=react)](https://github.com/renanholler/fincheck_frontend)
-[![Database](https://img.shields.io/badge/Database-PostgreSQL-316192?logo=postgresql)](https://www.postgresql.org/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](./docker-compose.yml)
-
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg" height="40" alt="nest logo" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" height="40" alt="tailwind logo" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="40" alt="postgresql logo" />
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg" height="40" alt="docker logo" />
 </div>
 
 ---
@@ -76,7 +75,7 @@
 
 ### Repositórios
 
-Este é um **monorepo** que centraliza a orquestração. Os códigos são mantidos em repositórios separados como **Git Submodules**:
+Este é um **monorepo** que centraliza a orquestração. Os códigos são mantidos em repositórios separados com **Git Submodules**:
 
 - **[fincheck_api](https://github.com/renanholler/fincheck_api)** - Backend (API REST)
 - **[fincheck_frontend](https://github.com/renanholler/fincheck_frontend)** - Frontend (SPA)
