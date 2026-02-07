@@ -2,13 +2,9 @@
 
 **Fincheck** é uma aplicação completa de controle financeiro pessoal, permitindo que usuários gerenciem suas receitas, despesas e contas bancárias de forma simples e intuitiva.
 
-<div style="display: grid; grid-auto-flow: column;">
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-original.svg" height="40" alt="nest logo" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg" height="40" alt="tailwind logo" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="40" alt="postgresql logo" />
-  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/prisma/prisma-original.svg" height="40" alt="prisma logo" />
-</div>
+<img width="49%" alt="login" src="https://github.com/user-attachments/assets/518ad5a1-c0a0-43c4-8095-69f8ed65c890" />
+<img width="49%" alt="dashboard" src="https://github.com/user-attachments/assets/2d792aae-3bc4-4863-bbb1-680460561a80" />
+
 
 ---
 
@@ -29,7 +25,7 @@
 
 ### Backend (API)
 
-- **[NestJS](https://nestjs.com/)** - Framework Node.js progressivo
+- **[NestJS](https://nestjs.com/)** - Framework Node.js opinado e modular
 - **[Prisma](https://www.prisma.io/)** - ORM moderno para TypeScript
 - **[PostgreSQL](https://www.postgresql.org/)** - Banco de dados relacional
 - **[JWT](https://jwt.io/)** - Autenticação stateless
@@ -52,26 +48,8 @@
 
 ## 🏗️ Arquitetura
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                         Frontend                             │
-│                     (React + Vite)                          │
-│                      Port: 5173                             │
-└────────────────────┬────────────────────────────────────────┘
-                     │ HTTP/REST
-                     │
-┌────────────────────▼────────────────────────────────────────┐
-│                          API                                 │
-│                    (NestJS + Prisma)                        │
-│                      Port: 3000                             │
-└────────────────────┬────────────────────────────────────────┘
-                     │ Prisma ORM
-                     │
-┌────────────────────▼────────────────────────────────────────┐
-│                      PostgreSQL                              │
-│                      Port: 5432                             │
-└─────────────────────────────────────────────────────────────┘
-```
+<img width="100%" alt="arc" src="https://github.com/user-attachments/assets/2e8666f5-5a24-41a3-95f8-a75bd0443c2f" />
+
 
 ### Repositórios
 
