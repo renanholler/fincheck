@@ -7,49 +7,49 @@ O Fincheck segue uma arquitetura **Client-Server** moderna, com separação clar
 ## Diagrama de Arquitetura
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    Camada de Apresentação                    │
-│                                                              │
-│  ┌────────────────────────────────────────────────────┐    │
-│  │              React Application (SPA)                │    │
-│  │                                                      │    │
-│  │  ├─ Pages (Rotas)                                  │    │
-│  │  ├─ Components (UI)                                │    │
-│  │  ├─ Hooks (Lógica)                                 │    │
-│  │  ├─ Services (HTTP Client)                         │    │
-│  │  └─ State Management (React Query)                 │    │
-│  └────────────────────────────────────────────────────┘    │
-└─────────────────────────┬────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────┐
+│                    Camada de Apresentação                │
+│                                                          │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │              React Application (SPA)               │  │
+│  │                                                    │  │
+│  │  ├─ Pages (Rotas)                                  │  │
+│  │  ├─ Components (UI)                                │  │
+│  │  ├─ Hooks (Lógica)                                 │  │
+│  │  ├─ Services (HTTP Client)                         │  │
+│  │  └─ State Management (React Query)                 │  │
+│  └────────────────────────────────────────────────────┘  │
+└─────────────────────────┬────────────────────────────────┘
                           │ HTTPS/REST
                           │ JSON
-┌─────────────────────────▼────────────────────────────────────┐
-│                    Camada de Aplicação                       │
-│                                                              │
-│  ┌────────────────────────────────────────────────────┐    │
-│  │              NestJS Application                     │    │
-│  │                                                      │    │
-│  │  ├─ Controllers (Endpoints)                        │    │
-│  │  ├─ Services (Business Logic)                      │    │
-│  │  ├─ DTOs (Validation)                              │    │
-│  │  ├─ Guards (Authentication)                        │    │
-│  │  ├─ Pipes (Data Transform)                         │    │
-│  │  └─ Filters (Error Handling)                       │    │
-│  └────────────────────────────────────────────────────┘    │
-└─────────────────────────┬────────────────────────────────────┘
+┌─────────────────────────▼────────────────────────────────┐
+│                    Camada de Aplicação                   │
+│                                                          │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │              NestJS Application                    │  │
+│  │                                                    │  │
+│  │  ├─ Controllers (Endpoints)                        │  │
+│  │  ├─ Services (Business Logic)                      │  │
+│  │  ├─ DTOs (Validation)                              │  │
+│  │  ├─ Guards (Authentication)                        │  │
+│  │  ├─ Pipes (Data Transform)                         │  │
+│  │  └─ Filters (Error Handling)                       │  │
+│  └────────────────────────────────────────────────────┘  │
+└─────────────────────────┬────────────────────────────────┘
                           │ Prisma Client
                           │ Type-safe queries
-┌─────────────────────────▼────────────────────────────────────┐
-│                    Camada de Persistência                    │
-│                                                              │
-│  ┌────────────────────────────────────────────────────┐    │
-│  │                  PostgreSQL                         │    │
-│  │                                                      │    │
-│  │  ├─ Users                                           │    │
-│  │  ├─ BankAccounts                                   │    │
-│  │  ├─ Categories                                     │    │
-│  │  └─ Transactions                                   │    │
-│  └────────────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────▼────────────────────────────────┐
+│                    Camada de Persistência                │
+│                                                          │
+│  ┌────────────────────────────────────────────────────┐  │
+│  │                  PostgreSQL                        │  │
+│  │                                                    │  │
+│  │  ├─ Users                                          │  │
+│  │  ├─ BankAccounts                                   │  │
+│  │  ├─ Categories                                     │  │
+│  │  └─ Transactions                                   │  │
+│  └────────────────────────────────────────────────────┘  │
+└──────────────────────────────────────────────────────────┘
 ```
 
 ## Módulos do Backend
@@ -207,12 +207,6 @@ Transaction {
 }
 ```
 
-### Índices
-- `User.email` (unique)
-- `Transaction.userId + date` (performance)
-- `BankAccount.userId` (performance)
-- `Category.userId` (performance)
-
 ## Decisões Técnicas
 
 ### Por que NestJS?
@@ -242,40 +236,3 @@ Transaction {
 - Times podem trabalhar isoladamente
 - Versionamento granular
 - Mantém histórico completo
-
-## Performance
-
-### Backend
-- Lazy loading de relações
-- Índices otimizados
-- Queries seletivas (only fields needed)
-- Connection pooling (Prisma)
-
-### Frontend
-- Code splitting (React Router)
-- Lazy loading de componentes
-- React Query cache
-- Debounce em buscas
-- Optimistic updates
-
-## Escalabilidade
-
-### Horizontal
-- API stateless (JWT)
-- Docker containerizado
-- Pronto para load balancer
-- Database connection pooling
-
-### Vertical
-- Queries otimizadas
-- Índices apropriados
-- Paginação em listas grandes
-- Lazy loading
-
-## Monitoramento (Futuro)
-
-- [ ] Logs estruturados
-- [ ] APM (Application Performance Monitoring)
-- [ ] Error tracking (Sentry)
-- [ ] Métricas de uso
-- [ ] Health checks
