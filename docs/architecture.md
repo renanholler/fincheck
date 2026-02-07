@@ -1,21 +1,21 @@
-# Arquitetura do Fincheck
+# Fincheck Architecture
 
-## Visão Geral
+## Overview
 
-O Fincheck segue uma arquitetura **Client-Server** moderna, com separação clara entre frontend e backend, comunicando-se via API REST.
+Fincheck follows a modern **Client-Server** architecture with a clear separation between frontend and backend, communicating through a REST API.
 
-## Diagrama de Arquitetura
+## Architecture Diagram
 
 ```
 ┌──────────────────────────────────────────────────────────┐
-│                    Camada de Apresentação                │
+│                    Presentation Layer                    │
 │                                                          │
 │  ┌────────────────────────────────────────────────────┐  │
 │  │              React Application (SPA)               │  │
 │  │                                                    │  │
-│  │  ├─ Pages (Rotas)                                  │  │
+│  │  ├─ Pages (Routes)                                 │  │
 │  │  ├─ Components (UI)                                │  │
-│  │  ├─ Hooks (Lógica)                                 │  │
+│  │  ├─ Hooks (Logic)                                  │  │
 │  │  ├─ Services (HTTP Client)                         │  │
 │  │  └─ State Management (React Query)                 │  │
 │  └────────────────────────────────────────────────────┘  │
@@ -23,7 +23,7 @@ O Fincheck segue uma arquitetura **Client-Server** moderna, com separação clar
                           │ HTTPS/REST
                           │ JSON
 ┌─────────────────────────▼────────────────────────────────┐
-│                    Camada de Aplicação                   │
+│                    Application Layer                     │
 │                                                          │
 │  ┌────────────────────────────────────────────────────┐  │
 │  │              NestJS Application                    │  │
@@ -39,7 +39,7 @@ O Fincheck segue uma arquitetura **Client-Server** moderna, com separação clar
                           │ Prisma Client
                           │ Type-safe queries
 ┌─────────────────────────▼────────────────────────────────┐
-│                    Camada de Persistência                │
+│                    Persistence Layer                    │
 │                                                          │
 │  ┌────────────────────────────────────────────────────┐  │
 │  │                  PostgreSQL                        │  │
@@ -52,118 +52,146 @@ O Fincheck segue uma arquitetura **Client-Server** moderna, com separação clar
 └──────────────────────────────────────────────────────────┘
 ```
 
-## Módulos do Backend
+## Backend Modules
 
 ### Auth Module
-**Responsabilidade**: Autenticação e autorização
 
-- Login de usuários
-- Cadastro (signup)
-- Geração de JWT tokens
-- Validação de tokens
-- Proteção de rotas
+**Responsibility**: Authentication and authorization
 
-**Endpoints**:
-- `POST /auth/signin` - Login
-- `POST /auth/signup` - Cadastro
+* User login
+* User signup
+* JWT token generation
+* Token validation
+* Route protection
+
+**Endpoints**
+
+* `POST /auth/signin` — Login
+* `POST /auth/signup` — Signup
+
+---
 
 ### Users Module
-**Responsabilidade**: Gestão de usuários
 
-- Buscar dados do usuário autenticado
-- Atualizar perfil
+**Responsibility**: User management
 
-**Endpoints**:
-- `GET /users/me` - Dados do usuário atual
+* Fetch authenticated user data
+* Update profile
+
+**Endpoints**
+
+* `GET /users/me` — Current user data
+
+---
 
 ### Categories Module
-**Responsabilidade**: Categorias de transações
 
-- Listar categorias do usuário
-- Categorias pré-definidas por tipo (INCOME/EXPENSE)
+**Responsibility**: Transaction categories
 
-**Endpoints**:
-- `GET /categories` - Lista categorias
+* List user categories
+* Default categories by type (INCOME/EXPENSE)
+
+**Endpoints**
+
+* `GET /categories` — List categories
+
+---
 
 ### Bank Accounts Module
-**Responsabilidade**: Contas bancárias
 
-- CRUD de contas
-- Cálculo de saldo
-- Listagem de contas do usuário
+**Responsibility**: Bank accounts
 
-**Endpoints**:
-- `GET /bank-accounts` - Listar contas
-- `POST /bank-accounts` - Criar conta
-- `PUT /bank-accounts/:id` - Atualizar conta
-- `DELETE /bank-accounts/:id` - Deletar conta
+* Account CRUD
+* Balance calculation
+* List user accounts
+
+**Endpoints**
+
+* `GET /bank-accounts` — List accounts
+* `POST /bank-accounts` — Create account
+* `PUT /bank-accounts/:id` — Update account
+* `DELETE /bank-accounts/:id` — Delete account
+
+---
 
 ### Transactions Module
-**Responsabilidade**: Receitas e despesas
 
-- CRUD de transações
-- Filtros por período, categoria, tipo
-- Vínculo com contas bancárias
-- Atualização automática de saldos
+**Responsibility**: Income and expenses
 
-**Endpoints**:
-- `GET /transactions` - Listar transações
-- `POST /transactions` - Criar transação
-- `PUT /transactions/:id` - Atualizar transação
-- `DELETE /transactions/:id` - Deletar transação
+* Transaction CRUD
+* Filters by period, category and type
+* Link with bank accounts
+* Automatic balance updates
 
-## Frontend - Estrutura de Páginas
+**Endpoints**
 
-```
-/                       → Login/Signup
-/dashboard              → Dashboard principal
-  ├─ Visão geral
-  ├─ Gráficos
-  └─ Resumo financeiro
-/transactions           → Lista de transações
-/accounts               → Gerenciar contas
-/categories             → Gerenciar categorias
-```
+* `GET /transactions` — List transactions
+* `POST /transactions` — Create transaction
+* `PUT /transactions/:id` — Update transaction
+* `DELETE /transactions/:id` — Delete transaction
 
-## Fluxo de Autenticação
+---
+
+## Frontend — Pages Structure
 
 ```
-1. Usuário faz login
+/                     → Login/Signup
+/dashboard            → Main dashboard
+  ├─ Overview
+  ├─ Charts
+  └─ Financial summary
+/transactions         → Transactions list
+/accounts             → Manage accounts
+/categories           → Manage categories
+```
+
+---
+
+## Authentication Flow
+
+```
+1. User logs in
    └─> POST /auth/signin
-       └─> Backend valida credenciais
-           └─> Gera JWT token
-               └─> Frontend armazena no localStorage
+       └─> Backend validates credentials
+           └─> Generates JWT token
+               └─> Frontend stores token in localStorage
 
-2. Requisições subsequentes
-   └─> Frontend inclui header: Authorization: Bearer <token>
-       └─> Backend valida token (AuthGuard)
-           └─> Extrai userId do token
-               └─> Injeta no request (CurrentUser decorator)
+2. Subsequent requests
+   └─> Frontend sends header: Authorization: Bearer <token>
+       └─> Backend validates token (AuthGuard)
+           └─> Extracts userId from token
+               └─> Injects into request (CurrentUser decorator)
 
 3. Logout
-   └─> Frontend remove token do localStorage
+   └─> Frontend removes token from localStorage
 ```
 
-## Segurança
+---
+
+## Security
 
 ### Backend
-- ✅ Bcrypt para hash de senhas
-- ✅ JWT para autenticação stateless
-- ✅ Guards para proteção de rotas
-- ✅ Class Validator para validação de DTOs
-- ✅ Isolamento de dados por usuário
-- ✅ CORS configurado
+
+* Bcrypt password hashing
+* Stateless JWT authentication
+* Guards for route protection
+* DTO validation with class-validator
+* User data isolation
+* Configured CORS
 
 ### Frontend
-- ✅ Token armazenado em localStorage
-- ✅ Rotas protegidas (React Router)
-- ✅ Validação de formulários
-- ✅ Sanitização de inputs
-- ✅ HTTPS em produção
 
-## Banco de Dados
+* Token stored in localStorage
+* Protected routes
+* Form validation
+* Input sanitization
+* HTTPS in production
 
-### Schema Principal
+---
+
+## Database
+
+### Main Schema
 
 ```prisma
 User {
@@ -207,32 +235,38 @@ Transaction {
 }
 ```
 
-## Decisões Técnicas
+---
 
-### Por que NestJS?
-- Framework maduro e opinado
-- TypeScript first
-- Arquitetura modular
-- Decorators poderosos
-- Excelente integração com Prisma
+## Technical Decisions
 
-### Por que Prisma?
-- Type-safety completa
-- Migrations automáticas
-- Query builder intuitivo
-- Excelente DX
-- Suporte a PostgreSQL
+### Why NestJS?
 
-### Por que React Query?
-- Cache automático
-- Revalidação inteligente
-- Loading/Error states
-- Otimistic updates
-- Sincronização de estado server
+* Mature and opinionated framework
+* TypeScript-first
+* Modular architecture
+* Powerful decorators
+* Excellent Prisma integration
 
-### Por que Submodules?
-- Repositórios independentes
-- Facilita CI/CD separado
-- Times podem trabalhar isoladamente
-- Versionamento granular
-- Mantém histórico completo
+### Why Prisma?
+
+* Full type-safety
+* Automatic migrations
+* Intuitive query builder
+* Great developer experience
+* PostgreSQL support
+
+### Why React Query?
+
+* Automatic caching
+* Smart revalidation
+* Loading/error states
+* Optimistic updates
+* Server state synchronization
+
+### Why Submodules?
+
+* Independent repositories
+* Easier separate CI/CD
+* Teams can work independently
+* Granular versioning
+* Full history preserved
