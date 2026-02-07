@@ -93,7 +93,7 @@ Pronto! A aplicação estará disponível em:
 
 ## 💻 Comandos Úteis
 
-### Com Makefile
+### Makefile
 
 ```bash
 make help              # Ver todos os comandos
@@ -102,35 +102,6 @@ make down              # Parar containers
 make logs              # Ver logs
 make clean             # Resetar banco de dados
 make prisma-studio     # Abrir Prisma Studio
-```
-
-### Com Docker Compose
-
-```bash
-docker-compose up       # Iniciar com logs
-docker-compose up -d    # Iniciar em background
-docker-compose down     # Parar containers
-docker-compose down -v  # Parar e resetar banco
-docker-compose logs -f  # Ver logs
-```
-
-### Trabalhando com Submodules
-
-```bash
-# Atualizar submodules
-git submodule update --remote
-
-# Fazer mudanças em um submodule
-cd api  # ou frontend
-git checkout main
-# ... fazer alterações ...
-git add . && git commit -m "feat: nova feature"
-git push
-
-# Voltar ao monorepo e atualizar referência
-cd ..
-git add api
-git commit -m "chore: update api submodule"
 ```
 
 ---
@@ -150,14 +121,4 @@ fincheck/
 ├── .env.example          # Template de variáveis
 └── README.md             # Este arquivo
 ```
-
----
-
-<div align="center">
-  
-Projeto desenvolvido durante o bootcamp da [JStack](https://jstack.com.br/)
-
-**Renan Holler** · [GitHub](https://github.com/renanholler) · [LinkedIn](https://www.linkedin.com/in/renanholler)
-
-</div>
 
