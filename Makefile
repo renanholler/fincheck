@@ -56,7 +56,7 @@ ps: ## Status dos containers
 
 update-submodules: ## Atualiza os submodules
 	@echo "$(GREEN)Atualizando submodules...$(NC)"
-	@./scripts/update-submodules.sh
+	@git submodule update --remote
 
 shell-api: ## Acessa o shell do container da API
 	@docker-compose exec api sh

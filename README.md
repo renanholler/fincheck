@@ -13,49 +13,15 @@
 
 ---
 
-## 📋 Índice
-
-- [Sobre o Projeto](#-sobre-o-projeto)
-- [Funcionalidades](#-funcionalidades)
-- [Tecnologias](#-tecnologias)
-- [Arquitetura](#-arquitetura)
-- [Começando](#-começando)
-- [Desenvolvimento](#-desenvolvimento)
-- [Estrutura do Projeto](#-estrutura-do-projeto)
-- [Documentação](#-documentação)
-- [Contribuindo](#-contribuindo)
-- [Licença](#-licença)
-
----
-
-## 🎯 Sobre o Projeto
-
-O Fincheck é uma solução moderna para gestão financeira pessoal, desenvolvida com as melhores práticas e tecnologias atuais do mercado. O projeto foi construído com foco em:
-
-- **Segurança**: Autenticação JWT, validação de dados e proteção contra vulnerabilidades
-- **Performance**: Otimizações de queries, cache e carregamento lazy
-- **Experiência do Usuário**: Interface moderna, responsiva e intuitiva
-- **Escalabilidade**: Arquitetura modular e containerizada
-
----
-
 ## ✨ Funcionalidades
 
-### Gestão Financeira
 - ✅ Cadastro e gerenciamento de receitas e despesas
 - ✅ Categorização de transações
 - ✅ Filtros avançados por período, categoria e tipo
 - ✅ Dashboard com visão geral das finanças
-
-### Contas Bancárias
-- ✅ Cadastro de múltiplas contas (conta corrente, poupança, investimentos)
+- ✅ Cadastro de múltiplas contas bancárias
 - ✅ Acompanhamento de saldo em tempo real
-- ✅ Histórico de transações por conta
-
-### Autenticação e Segurança
-- ✅ Sistema de cadastro e login
-- ✅ Autenticação JWT
-- ✅ Proteção de rotas
+- ✅ Sistema de autenticação JWT
 - ✅ Dados isolados por usuário
 
 ---
@@ -67,28 +33,22 @@ O Fincheck é uma solução moderna para gestão financeira pessoal, desenvolvid
 - **[Prisma](https://www.prisma.io/)** - ORM moderno para TypeScript
 - **[PostgreSQL](https://www.postgresql.org/)** - Banco de dados relacional
 - **[JWT](https://jwt.io/)** - Autenticação stateless
-- **[Bcrypt](https://github.com/kelektiv/node.bcrypt.js)** - Hash de senhas
-- **[Class Validator](https://github.com/typestack/class-validator)** - Validação de dados
 
 ### Frontend
 - **[React](https://react.dev/)** - Biblioteca para interfaces
-- **[TypeScript](https://www.typescriptlang.org/)** - Superset JavaScript com tipagem
-- **[Vite](https://vitejs.dev/)** - Build tool moderna e rápida
-- **[React Query](https://tanstack.com/query)** - Gerenciamento de estado server
-- **[React Hook Form](https://react-hook-form.com/)** - Formulários performáticos
+- **[TypeScript](https://www.typescriptlang.org/)** - JavaScript com tipagem
+- **[Vite](https://vitejs.dev/)** - Build tool moderna
+- **[React Query](https://tanstack.com/query)** - Gerenciamento de estado
 - **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first
 - **[Radix UI](https://www.radix-ui.com/)** - Componentes acessíveis
 
-### DevOps & Infraestrutura
+### DevOps
 - **[Docker](https://www.docker.com/)** - Containerização
-- **[Docker Compose](https://docs.docker.com/compose/)** - Orquestração local
-- **[pnpm](https://pnpm.io/)** - Gerenciador de pacotes eficiente
+- **[Docker Compose](https://docs.docker.com/compose/)** - Orquestração
 
 ---
 
 ## 🏗️ Arquitetura
-
-O Fincheck segue uma arquitetura **Client-Server** com separação clara de responsabilidades:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -113,37 +73,34 @@ O Fincheck segue uma arquitetura **Client-Server** com separação clara de resp
 
 ### Repositórios
 
-Este é um **monorepo** que centraliza a documentação e orquestração, com os códigos mantidos em repositórios separados:
+Este é um **monorepo** que centraliza a orquestração. Os códigos são mantidos em repositórios separados como **Git Submodules**:
 
 - **[fincheck_api](https://github.com/renanholler/fincheck_api)** - Backend (API REST)
 - **[fincheck_frontend](https://github.com/renanholler/fincheck_frontend)** - Frontend (SPA)
 
-Os repositórios são incluídos como **Git Submodules**, permitindo desenvolvimento independente enquanto mantém a sincronização.
+Para mais detalhes sobre a arquitetura, veja [docs/architecture.md](./docs/architecture.md).
 
 ---
 
-## 🚀 Começando
+## 🚀 Como Executar
 
 ### Pré-requisitos
 
-- [Docker](https://www.docker.com/get-started) >= 20.10
-- [Docker Compose](https://docs.docker.com/compose/install/) >= 2.0
-- [Git](https://git-scm.com/) >= 2.30
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [Git](https://git-scm.com/)
 
-### Instalação Rápida
+### Instalação
 
 ```bash
 # Clone o repositório com os submodules
 git clone --recurse-submodules https://github.com/renanholler/fincheck.git
 cd fincheck
 
-# Ou se já clonou sem os submodules
-git submodule update --init --recursive
-
 # Inicie os containers
 docker-compose up -d
 
-# Aguarde os serviços iniciarem (pode levar 1-2 minutos na primeira vez)
+# Aguarde ~1 minuto para os serviços iniciarem
 ```
 
 Pronto! A aplicação estará disponível em:
@@ -151,70 +108,22 @@ Pronto! A aplicação estará disponível em:
 - 🔌 **API**: http://localhost:3000
 - 🗄️ **PostgreSQL**: localhost:5432
 
-### Verificar Status
-
-```bash
-# Ver logs dos serviços
-docker-compose logs -f
-
-# Ver status dos containers
-docker-compose ps
-```
-
 ---
 
-## 💻 Desenvolvimento
+## 💻 Comandos Úteis
 
-### Estrutura de Pastas
-
-```
-fincheck/
-├── api/                  # Backend (Git Submodule)
-├── frontend/             # Frontend (Git Submodule)
-├── docs/                 # Documentação técnica
-├── scripts/              # Scripts de automação
-├── .github/              # GitHub Actions (CI/CD)
-├── docker-compose.yml    # Orquestração Docker
-├── README.md            # Este arquivo
-└── README-DOCKER.md     # Guia Docker detalhado
-```
-
-### Comandos Úteis
-
-O projeto inclui um `Makefile` para facilitar o desenvolvimento. Para ver todos os comandos disponíveis:
+### Com Makefile
 
 ```bash
-make help
+make help              # Ver todos os comandos
+make up                # Iniciar containers
+make down              # Parar containers
+make logs              # Ver logs
+make clean             # Resetar banco de dados
+make prisma-studio     # Abrir Prisma Studio
 ```
 
-#### Comandos Principais
-
-```bash
-# Setup e inicialização
-make setup              # Setup inicial completo
-make up                 # Inicia containers (com logs)
-make up-d               # Inicia em background
-make down               # Para containers
-make clean              # Para e remove volumes (reseta banco)
-
-# Logs e monitoramento
-make logs               # Logs de todos os serviços
-make logs-api           # Logs apenas da API
-make logs-frontend      # Logs apenas do Frontend
-make ps                 # Status dos containers
-
-# Desenvolvimento
-make shell-api          # Acessa shell da API
-make shell-frontend     # Acessa shell do Frontend
-make prisma-studio      # Abre Prisma Studio
-
-# Manutenção
-make build              # Reconstrói imagens
-make rebuild            # Limpa tudo e reconstrói
-make update-submodules  # Atualiza submodules
-```
-
-#### Ou use Docker Compose diretamente
+### Com Docker Compose
 
 ```bash
 docker-compose up       # Iniciar com logs
@@ -224,109 +133,42 @@ docker-compose down -v  # Parar e resetar banco
 docker-compose logs -f  # Ver logs
 ```
 
-#### Submodules
+### Trabalhando com Submodules
 
 ```bash
-# Atualizar todos os submodules para o último commit
+# Atualizar submodules
 git submodule update --remote
 
-# Entrar em um submodule para fazer commits
-cd api
+# Fazer mudanças em um submodule
+cd api  # ou frontend
 git checkout main
 # ... fazer alterações ...
 git add . && git commit -m "feat: nova feature"
 git push
 
-# Voltar ao monorepo e atualizar a referência
+# Voltar ao monorepo e atualizar referência
 cd ..
 git add api
 git commit -m "chore: update api submodule"
 ```
 
-#### Desenvolvimento Local (sem Docker)
-
-Se preferir rodar localmente sem Docker, consulte os READMEs específicos:
-- [API - Setup Local](./api/README.md)
-- [Frontend - Setup Local](./frontend/README.md)
-
 ---
 
 ## 📁 Estrutura do Projeto
 
-### Backend (API)
-
 ```
-api/
-├── prisma/              # Schema e migrations do banco
-├── src/
-│   ├── modules/         # Módulos da aplicação
-│   │   ├── auth/        # Autenticação e autorização
-│   │   ├── users/       # Gestão de usuários
-│   │   ├── categories/  # Categorias de transações
-│   │   ├── bank-accounts/ # Contas bancárias
-│   │   └── transactions/  # Receitas e despesas
-│   ├── shared/          # Código compartilhado
-│   └── main.ts         # Entry point
-└── package.json
+fincheck/
+├── api/                  # Backend (Git Submodule)
+├── frontend/             # Frontend (Git Submodule)
+├── docs/                 # Documentação
+│   └── architecture.md   # Arquitetura técnica
+├── scripts/              # Scripts de automação
+│   └── setup.sh         # Setup inicial
+├── docker-compose.yml    # Orquestração Docker
+├── Makefile             # Comandos úteis
+├── .env.example         # Template de variáveis
+└── README.md           # Este arquivo
 ```
-
-### Frontend
-
-```
-frontend/
-├── public/             # Assets estáticos
-├── src/
-│   ├── app/           # Rotas e páginas
-│   ├── view/          # Componentes de UI
-│   │   ├── components/ # Componentes reutilizáveis
-│   │   └── pages/     # Páginas da aplicação
-│   ├── lib/           # Utilitários e configurações
-│   └── main.tsx       # Entry point
-└── package.json
-```
-
----
-
-## 📚 Documentação
-
-Para documentação mais detalhada, consulte:
-
-- **[Quick Start](./QUICKSTART.md)** - Começar em 5 minutos
-- **[Guia Docker](./README-DOCKER.md)** - Setup e troubleshooting do Docker
-- **[Documentação da API](./docs/api.md)** - Endpoints e contratos
-- **[Guia de Contribuição](./docs/contributing.md)** - Como contribuir
-- **[Arquitetura](./docs/architecture.md)** - Decisões técnicas
-- **[Changelog](./CHANGELOG.md)** - Histórico de versões
-
----
-
-## 🤝 Contribuindo
-
-Contribuições são bem-vindas! Para contribuir:
-
-1. Fork o repositório
-2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
-3. Commit suas mudanças (`git commit -m 'feat: adiciona MinhaFeature'`)
-4. Push para a branch (`git push origin feature/MinhaFeature`)
-5. Abra um Pull Request
-
-### Convenções de Commit
-
-Seguimos o padrão [Conventional Commits](https://www.conventionalcommits.org/):
-
-- `feat:` Nova funcionalidade
-- `fix:` Correção de bug
-- `docs:` Documentação
-- `style:` Formatação (não afeta lógica)
-- `refactor:` Refatoração de código
-- `test:` Testes
-- `chore:` Tarefas de build/config
-
----
-
-## 📄 Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](./LICENSE) para detalhes.
 
 ---
 
