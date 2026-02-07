@@ -37,7 +37,7 @@
 - **[Vite](https://vitejs.dev/)** - Build tool moderna
 - **[React Query](https://tanstack.com/query)** - Gerenciamento de estado
 - **[Tailwind CSS](https://tailwindcss.com/)** - Framework CSS utility-first
-- **[Radix UI](https://www.radix-ui.com/)** - Componentes acessíveis
+- **[shadcn/ui](https://ui.shadcn.com/)** - Componentes reutilizáveis
 
 ### DevOps
 
