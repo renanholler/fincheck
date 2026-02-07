@@ -150,3 +150,14 @@ fincheck/
 ├── .env.example          # Template de variáveis
 └── README.md             # Este arquivo
 ```
+
+---
+
+<div align="center">
+  
+Projeto desenvolvido durante o bootcamp da [JStack](https://jstack.com.br/)
+
+**Renan Holler** · [GitHub](https://github.com/renanholler) · [LinkedIn](https://www.linkedin.com/in/renanholler)
+
+</div>
+
