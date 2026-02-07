@@ -167,9 +167,9 @@ fincheck/
 ├── docs/                 # Documentação
 │   └── architecture.md   # Arquitetura técnica
 ├── scripts/              # Scripts de automação
-│   └── setup.sh         # Setup inicial
+│   └── setup.sh          # Setup inicial
 ├── docker-compose.yml    # Orquestração Docker
-├── Makefile             # Comandos úteis
-├── .env.example         # Template de variáveis
-└── README.md           # Este arquivo
+├── Makefile              # Comandos úteis
+├── .env.example          # Template de variáveis
+└── README.md             # Este arquivo
 ```
