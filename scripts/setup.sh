@@ -1,81 +1,81 @@
 #!/bin/bash
 
-# Script para setup inicial do projeto Fincheck
+# Fincheck initial setup script
 
 set -e
 
-echo "🚀 Fincheck - Setup Inicial"
+echo "🚀 Fincheck - Initial Setup"
 echo "=============================="
 echo ""
 
-# Verificar Docker
+# Check Docker
 if ! command -v docker &> /dev/null; then
-    echo "❌ Docker não encontrado. Por favor, instale o Docker primeiro."
+    echo "❌ Docker not found. Please install Docker first:"
     echo "   https://www.docker.com/get-started"
     exit 1
 fi
 
 if ! command -v docker-compose &> /dev/null; then
-    echo "❌ Docker Compose não encontrado. Por favor, instale o Docker Compose."
+    echo "❌ Docker Compose not found. Please install Docker Compose."
     exit 1
 fi
 
-echo "✅ Docker e Docker Compose encontrados"
+echo "✅ Docker and Docker Compose detected"
 echo ""
 
-# Verificar submodules
-echo "📦 Verificando submodules..."
+# Check submodules
+echo "📦 Checking submodules..."
 if [ ! -d "api/.git" ] || [ ! -d "frontend/.git" ]; then
-    echo "⚠️  Submodules não inicializados. Inicializando..."
+    echo "⚠️  Submodules not initialized. Initializing..."
     git submodule update --init --recursive
 else
-    echo "✅ Submodules já inicializados"
+    echo "✅ Submodules already initialized"
 fi
 echo ""
 
-# Criar arquivo .env se não existir
+# Create .env file if not exists
 if [ ! -f ".env" ]; then
-    echo "📝 Criando arquivo .env..."
+    echo "📝 Creating .env file..."
     cp .env.example .env
-    echo "✅ Arquivo .env criado. Edite-o com suas configurações."
+    echo "✅ .env file created. Update it with your environment variables."
 else
-    echo "✅ Arquivo .env já existe"
+    echo "✅ .env file already exists"
 fi
 echo ""
 
-# Criar arquivo .env na API se não existir
+# Create API .env if not exists
 if [ ! -f "api/.env" ]; then
-    echo "📝 Criando arquivo .env na API..."
+    echo "📝 Creating API .env file..."
     if [ -f "api/.env.example" ]; then
         cp api/.env.example api/.env
-        echo "✅ Arquivo api/.env criado"
+        echo "✅ api/.env file created"
     else
-        echo "⚠️  api/.env.example não encontrado. Crie manualmente o arquivo api/.env"
+        echo "⚠️  api/.env.example not found. Please create api/.env manually."
     fi
 else
-    echo "✅ Arquivo api/.env já existe"
+    echo "✅ api/.env file already exists"
 fi
 echo ""
 
-# Iniciar containers
-echo "🐳 Iniciando containers Docker..."
+# Start containers
+echo "🐳 Starting Docker containers..."
 docker-compose up -d
 
 echo ""
-echo "⏳ Aguardando serviços iniciarem..."
+echo "⏳ Waiting for services to start..."
 sleep 5
 
 echo ""
-echo "✅ Setup completo!"
+echo "✅ Setup completed!"
 echo ""
-echo "🎉 Aplicação disponível em:"
+echo "🎉 Application available at:"
 echo "   Frontend: http://localhost:5173"
 echo "   API: http://localhost:3000"
 echo "   PostgreSQL: localhost:5432"
 echo ""
-echo "📋 Comandos úteis:"
-echo "   docker-compose logs -f       # Ver logs"
-echo "   docker-compose ps            # Status dos containers"
-echo "   docker-compose down          # Parar containers"
-echo "   docker-compose down -v       # Parar e resetar banco"
+echo "📋 Useful commands:"
+echo "   docker-compose logs -f       # View logs"
+echo "   docker-compose ps            # Container status"
+echo "   docker-compose down          # Stop containers"
+echo "   docker-compose down -v       # Stop and reset database"
 echo ""
