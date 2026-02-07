@@ -1,0 +1,37 @@
+{
+  "name": "fincheck-monorepo",
+  "version": "1.0.0",
+  "description": "Fincheck - Personal Finance Management Application",
+  "scripts": {
+    "setup": "./scripts/setup.sh",
+    "update:submodules": "./scripts/update-submodules.sh",
+    "docker:up": "docker-compose up",
+    "docker:up:build": "docker-compose up --build",
+    "docker:down": "docker-compose down",
+    "docker:down:volumes": "docker-compose down -v",
+    "docker:logs": "docker-compose logs -f",
+    "docker:logs:api": "docker-compose logs -f api",
+    "docker:logs:frontend": "docker-compose logs -f frontend",
+    "docker:ps": "docker-compose ps"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/renanholler/fincheck.git"
+  },
+  "keywords": [
+    "finance",
+    "money",
+    "management",
+    "nestjs",
+    "react",
+    "typescript",
+    "prisma",
+    "postgresql"
+  ],
+  "author": "Renan Holler",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  }
+}
