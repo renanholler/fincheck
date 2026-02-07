@@ -1,0 +1,55 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: fincheck-postgres
+    environment:
+      POSTGRES_USER: fincheck
+      POSTGRES_PASSWORD: fincheck
+      POSTGRES_DB: fincheck
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fincheck"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: fincheck-api
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://fincheck:fincheck@postgres:5432/fincheck
+      JWT_SECRET: fincheck-jwt-secret-dev
+      NODE_ENV: development
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: sh -c "pnpm prisma migrate deploy && pnpm run start:dev"
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: fincheck-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:3000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - api
+    command: pnpm run dev -- --host 0.0.0.0
+
+volumes:
+  postgres_data:

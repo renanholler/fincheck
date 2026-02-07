@@ -1,0 +1,6 @@
+[submodule "api"]
+	path = api
+	url = https://github.com/renanholler/fincheck_api.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/renanholler/fincheck_frontend.git
