@@ -271,10 +271,12 @@ frontend/
 
 Para documentação mais detalhada, consulte:
 
+- **[Quick Start](./QUICKSTART.md)** - Começar em 5 minutos
 - **[Guia Docker](./README-DOCKER.md)** - Setup e troubleshooting do Docker
-- **[Documentação da API](./docs/api.md)** - Endpoints e contratos (em breve)
-- **[Guia de Contribuição](./docs/contributing.md)** - Como contribuir (em breve)
-- **[Arquitetura](./docs/architecture.md)** - Decisões técnicas (em breve)
+- **[Documentação da API](./docs/api.md)** - Endpoints e contratos
+- **[Guia de Contribuição](./docs/contributing.md)** - Como contribuir
+- **[Arquitetura](./docs/architecture.md)** - Decisões técnicas
+- **[Changelog](./CHANGELOG.md)** - Histórico de versões
 
 ---
 
@@ -304,7 +306,7 @@ Seguimos o padrão [Conventional Commits](https://www.conventionalcommits.org/):
 
 ## 📄 Licença
 
-Este projeto é para fins educacionais e de portfólio.
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](./LICENSE) para detalhes.
 
 ---
 
